@@ -1,0 +1,40 @@
+<!-- templates/blog.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Café - Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Code Café</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Blog</h2>
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h3>{{ post.topic }}</h3>
+                    <p>By {{ post.username }} on {{ post.date }} at {{ post.time }}</p>
+                    <p>{{ post.description }}</p>
+                    <a href="{{ url_for('blog_post_details', post_date=post.date, post_topic=post.topic) }}">Read More</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

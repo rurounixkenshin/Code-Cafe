@@ -1,0 +1,46 @@
+<!-- templates/about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Café - About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Code Café</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>About Us</h2>
+        <p>Welcome to Code Café, where passion for coding meets collaboration. Our mission is to create a space for developers to learn, share, and connect. Whether you're a seasoned coder or just starting your programming journey, Code Café is the place for you.</p>
+
+        <h3>Meet the Team</h3>
+        <ul>
+            <li><strong>John Doe</strong> - Founder and CEO</li>
+            <li><strong>Jane Smith</strong> - Lead Developer</li>
+            <li><strong>Chris Johnson</strong> - Community Manager</li>
+        </ul>
+
+        <h3>Connect with Us</h3>
+        <p>Follow us on social media for the latest updates and coding tips:</p>
+        <ul>
+            <li><a href="{{ social_links.twitter }}" target="_blank">Twitter</a></li>
+            <li><a href="{{ social_links.linkedin }}" target="_blank">LinkedIn</a></li>
+            <li><a href="{{ social_links.github }}" target="_blank">GitHub</a></li>
+        </ul>
+    </main>
+</body>
+</html>

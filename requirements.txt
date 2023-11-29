@@ -1,0 +1,5 @@
+Flask==2.1.1
+Jinja2==3.0.3
+MarkupSafe==2.0.1
+Flask-SQLAlchemy==2.5.0  # If using SQLAlchemy for database interaction
+requests==2.31  # If making HTTP requests, e.g., for GitHub API
