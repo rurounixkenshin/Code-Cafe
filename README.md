@@ -33,12 +33,14 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ShadowP2066/Code-Cafe.git```
+   git clone https://github.com/ShadowP2066/Code-Cafe.git
+   ```
 
 2. Install dependencies:
 
     ```cd code-cafe
-    pip install -r requirements.txt```
+    pip install -r requirements.txt
+    ```
 
 3. Run the Flask application:
 
