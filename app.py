@@ -1,5 +1,6 @@
 # app.py
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
+from psutil import users
 
 app = Flask(__name__)
 
@@ -26,21 +27,34 @@ social_links = {
 logo_filename = "images/Code Cafe Logo.png"  # Adjust the filename accordingly
 coffee_mug_filename = "images/Code Cafe Logo.png"  # Adjust the filename accordingly
 
+# Sample user data (replace with a database in a real application)
+users = {
+    'john_doe': {'password': 'password123'},
+    'jane_smith': {'password': 'secret'},
+}
+
 @app.route('/')
 def home():
     return render_template('home.html', logo_filename=logo_filename, coffee_mug_filename=coffee_mug_filename)
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-    # Add logic for handling sign-in form submission (to be implemented)
+    error_message = None  # Initialize error_message to None
+
     if request.method == 'POST':
-        # Retrieve username and password from the form data
         username = request.form.get('username')
         password = request.form.get('password')
 
-        # Add your authentication logic here (e.g., check credentials against a database)
+        # Check if the provided username exists and the password is correct
+        if username in users and users[username]['password'] == password:
+            # For simplicity, you can consider the user as signed in by setting a session variable
+            # In a real application, use a proper user authentication system
+            return redirect(url_for('home'))
 
-    return render_template('signin.html')
+        # If the username or password is incorrect, show an error message
+        error_message = 'Invalid username or password'
+
+    return render_template('signin.html', error_message=error_message)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

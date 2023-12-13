@@ -10,8 +10,6 @@
 </head>
 <body>
     <header>
-        <img src="{{ url_for('static', filename=logo_filename) }}" alt="Code Café Logo" id="logo">
-        <h1>Code Café</h1>
         <nav>
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -22,11 +20,65 @@
                 <li><a href="{{ url_for('register') }}">Register</a></li>
             </ul>
         </nav>
+        <div id="logo-container">
+            <img src="{{ url_for('static', filename=logo_filename) }}" alt="Code Café Logo" id="logo" style="max-width: 200px;">
+        </div>
     </header>
 
-    <main>
-        <div id="coffee-mug" style="background-image: url('{{ url_for('static', filename='Code Cafe Logo.png') }}');"></div>
-        <!-- Content for the home page -->
-    </main>
+    <!-- Hero Section with Background Image -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Welcome to Code Café</h1>
+            <p>Your hub for coding, projects, and community.</p>
+            <a href="{{ url_for('about') }}" class="button">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="featured-projects">
+        <h2>Featured Projects</h2>
+        <div class="project-list">
+            <!-- Display featured projects with thumbnails and descriptions -->
+            {% for project in projects %}
+                <div class="project-thumbnail">
+                    <img src="{{ url_for('static', filename=project.thumbnail) }}" alt="{{ project.name }} Thumbnail">
+                    <h3>{{ project.name }}</h3>
+                    <p>{{ project.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us">
+        <h2>About Code Café</h2>
+        <p>
+            Code Café is a community-driven platform dedicated to fostering collaboration,
+            learning, and innovation in the world of coding and technology.
+        </p>
+        <a href="{{ url_for('about') }}" class="button">Get to Know Us</a>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="latest-blog">
+        <h2>Latest Blog Posts</h2>
+        <div class="blog-list">
+            <!-- Display latest blog posts with usernames, dates, topics, and descriptions -->
+            {% for post in posts %}
+                <div class="blog-post">
+                    <h3>{{ post.topic }}</h3>
+                    <p>{{ post.description }}</p>
+                    <p class="meta-info">Posted by {{ post.username }} on {{ post.date }} at {{ post.time }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('blog') }}" class="button">Read More Blogs</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2023 Code Café. All rights reserved.</p>
+    </footer>
 </body>
 </html>
+
