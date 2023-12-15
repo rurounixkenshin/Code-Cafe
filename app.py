@@ -95,6 +95,23 @@ def blog_post_details(post_date, post_topic):
 def about():
     return render_template('about.html', social_links=social_links)
 
+@app.route('/profile')
+def profile():
+    # Assume user data is fetched from a database
+    user_data = {
+        "username": "JohnDoe",
+        "email": "john@example.com",
+        "bio": "A passionate coder exploring the world of technology.",
+        # Add more fields as needed
+    }
+
+    return render_template('profile.html', user_data=user_data)
+
+@app.route('/edit_profile')
+def edit_profile():
+    # Logic for editing the profile (to be implemented)
+    return "This is the page for editing the profile."
+
 # Other routes...
 
 if __name__ == '__main__':

@@ -1,11 +1,12 @@
-<!-- templates/register.html -->
+<!-- templates/profile.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Café - Register</title>
+    <title>Code Café - Profile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -18,6 +19,8 @@
                 <li><a href="{{ url_for('about') }}">About Us</a></li>
                 <li><a href="{{ url_for('signin') }}">Sign In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
+                <!-- Add a link to the profile page -->
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
             </ul>
         </nav>
         <div id="logo-container">
@@ -25,24 +28,19 @@
         </div>
     </header>
 
-    <main>
-        <div class="form-container">
-            <h2>Register</h2>
-            <form method="post" action="{{ url_for('register') }}">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit">Register</button>
-            </form>
+    <!-- Profile Section -->
+    <section id="profile">
+        <h2>Your Profile</h2>
+        <div class="profile-info">
+            <p><strong>Username:</strong> {{ user_data['username'] }}</p>
+            <p><strong>Email:</strong> {{ user_data['email'] }}</p>
+            <p><strong>Bio:</strong> {{ user_data['bio'] }}</p>
+            <!-- Add more fields as needed -->
         </div>
-    </main>
+        <a href="{{ url_for('edit_profile') }}" class="button">Edit Profile</a>
+    </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2023 Code Café. All rights reserved.</p>
     </footer>
