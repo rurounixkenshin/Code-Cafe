@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Café - About Us</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -28,19 +30,34 @@
         <p>Welcome to Code Café, where passion for coding meets collaboration. Our mission is to create a space for developers to learn, share, and connect. Whether you're a seasoned coder or just starting your programming journey, Code Café is the place for you.</p>
 
         <h3>Meet the Team</h3>
-        <ul>
-            <li><strong>Nkosi Makhubela</strong> - Founder and CEO</li>
-            <li><strong>Jane Smith</strong> - Lead Developer</li>
-            <li><strong>Chris Johnson</strong> - Community Manager</li>
-        </ul>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='nkosi.jpg') }}" alt="Nkosi Makhubela">
+                <p><strong>Nkosi Makhubela</strong><br>Founder and CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='jane.jpg') }}" alt="Jane Smith">
+                <p><strong>Jane Smith</strong><br>Lead Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='chris.jpg') }}" alt="Chris Johnson">
+                <p><strong>Chris Johnson</strong><br>Community Manager</p>
+            </div>
+        </div>
 
         <h3>Connect with Us</h3>
         <p>Follow us on social media for the latest updates and coding tips:</p>
-        <ul>
-            <li><a href="{{ social_links.twitter }}" target="_blank">Twitter</a></li>
-            <li><a href="{{ social_links.linkedin }}" target="_blank">LinkedIn</a></li>
-            <li><a href="{{ social_links.github }}" target="_blank">GitHub</a></li>
+        <ul class="social-links">
+            <li><a href="{{ social_links.twitter }}" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+            <li><a href="{{ social_links.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="{{ social_links.github }}" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+            <!-- Add GitHub link for ShadowP2066 -->
+            <li><a href="https://github.com/ShadowP2066" target="_blank"><i class="fab fa-github"></i> ShadowP2066</a></li>
         </ul>
     </main>
+
+    <footer>
+        <p>&copy; 2023 Code Café. All rights reserved.</p>
+    </footer>
 </body>
 </html>

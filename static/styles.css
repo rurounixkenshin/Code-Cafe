@@ -10,7 +10,7 @@ body {
 header {
     background-color: #333;
     color: white;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +34,7 @@ nav ul li a {
 }
 
 main {
-    padding: 20px;
+    padding: 50px;
 }
 
 /* Additional Home Page Styles */
@@ -108,12 +108,50 @@ p {
 #about-us h2 {
     font-size: 2em;
     margin-bottom: 20px;
+    color: #333; /* New color for About Us section heading */
 }
 
 #about-us p {
     font-size: 1.2em;
     line-height: 1.6;
     margin-bottom: 30px;
+    color: #555; /* New color for About Us section text */
+}
+
+ul.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+ul.team-members li {
+    max-width: 200px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul.social-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+ul.social-links li {
+    margin-right: 20px;
+}
+
+ul.social-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+ul.social-links a:hover {
+    color: #FFD700; /* Change to your preferred highlight color */
 }
 
 #latest-blog {
