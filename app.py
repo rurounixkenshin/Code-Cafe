@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, session, url_for
 from psutil import users
 
 app = Flask(__name__)
@@ -35,7 +35,9 @@ users = {
 
 @app.route('/')
 def home():
-    return render_template('home.html', logo_filename=logo_filename, coffee_mug_filename=coffee_mug_filename)
+    show_buttons = 'username' not in session
+    return render_template('home.html', logo_filename=logo_filename, coffee_mug_filename=coffee_mug_filename, show_buttons=show_buttons)
+
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
@@ -49,6 +51,7 @@ def signin():
         if username in users and users[username]['password'] == password:
             # For simplicity, you can consider the user as signed in by setting a session variable
             # In a real application, use a proper user authentication system
+            session['username'] = username
             return redirect(url_for('home'))
 
         # If the username or password is incorrect, show an error message
@@ -67,7 +70,8 @@ def register():
 
         # Add your registration logic here (e.g., store user data in a database)
 
-        # Assuming successful registration, redirect to the user's profile
+        # Assuming successful registration, set session variable and redirect to the user's profile
+        session['username'] = username
         return redirect(url_for('profile'))
 
     return render_template('register.html')
@@ -105,8 +109,13 @@ def profile():
         "username": "JohnDoe",
         "email": "john@example.com",
         "bio": "A passionate coder exploring the world of technology.",
-        # Add more fields as needed
     }
+        # Check if the user is logged in
+    if 'username' in session:
+        return render_template('profile.html', user_data=user_data, show_logout=True)
+    else:
+        return redirect(url_for('signin'))
+        # Add more fields as needed
 
     return render_template('profile.html', user_data=user_data)
 
@@ -114,6 +123,21 @@ def profile():
 def edit_profile():
     # Logic for editing the profile (to be implemented)
     return "This is the page for editing the profile."
+
+@app.route('/logout')
+def logout():
+    # Clear the session to log out the user
+    session.pop('username', None)
+    return redirect(url_for('home'))
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
+# ... (your existing code)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # Other routes...
 

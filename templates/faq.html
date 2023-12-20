@@ -1,0 +1,69 @@
+<!-- templates/faq.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Café - FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Code Café</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('faq') }}">FAQ</a></li>  <!-- Add the FAQ link -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Frequently Asked Questions (FAQ)</h2>
+
+        <section>
+            <h3>General Questions</h3>
+            <div class="faq-item">
+                <h4>Q: What is Code Café?</h4>
+                <p>A: Code Café is a community for passionate developers to learn, collaborate, and share knowledge.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: How can I join Code Café?</h4>
+                <p>A: You can join Code Café by registering on our website. Visit the registration page to create an account.</p>
+            </div>
+            
+            <!-- Add more general questions as needed -->
+        </section>
+
+        <section>
+            <h3>Account and Profile</h3>
+            <div class="faq-item">
+                <h4>Q: How can I reset my password?</h4>
+                <p>A: You can reset your password by clicking on the "Forgot Password" link on the sign-in page.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Q: Can I customize my profile?</h4>
+                <p>A: Yes, you can customize your profile by visiting the "Edit Profile" page after signing in.</p>
+            </div>
+            
+            <!-- Add more account and profile questions as needed -->
+        </section>
+
+        <!-- Add more sections and questions as needed -->
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Code Café. All rights reserved.</p>
+    </footer>
+</body>
+</html>
