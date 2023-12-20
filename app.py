@@ -67,6 +67,9 @@ def register():
 
         # Add your registration logic here (e.g., store user data in a database)
 
+        # Assuming successful registration, redirect to the user's profile
+        return redirect(url_for('profile'))
+
     return render_template('register.html')
 
 @app.route('/projects')

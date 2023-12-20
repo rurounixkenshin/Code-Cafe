@@ -32,26 +32,15 @@
         <h3>Meet the Team</h3>
         <div class="team-members">
             <div class="team-member">
-                <img src="{{ url_for('static', filename='nkosi.jpg') }}" alt="Nkosi Makhubela">
+                <img src="{{ url_for('static', filename='nkosi.jpg') }}" alt="Nkosi Makhubela" id="image" >
                 <p><strong>Nkosi Makhubela</strong><br>Founder and CEO</p>
             </div>
-            <div class="team-member">
-                <img src="{{ url_for('static', filename='jane.jpg') }}" alt="Jane Smith">
-                <p><strong>Jane Smith</strong><br>Lead Developer</p>
-            </div>
-            <div class="team-member">
-                <img src="{{ url_for('static', filename='chris.jpg') }}" alt="Chris Johnson">
-                <p><strong>Chris Johnson</strong><br>Community Manager</p>
-            </div>
-        </div>
 
         <h3>Connect with Us</h3>
         <p>Follow us on social media for the latest updates and coding tips:</p>
         <ul class="social-links">
             <li><a href="{{ social_links.twitter }}" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
             <li><a href="{{ social_links.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="{{ social_links.github }}" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-            <!-- Add GitHub link for ShadowP2066 -->
             <li><a href="https://github.com/ShadowP2066" target="_blank"><i class="fab fa-github"></i> ShadowP2066</a></li>
         </ul>
     </main>
