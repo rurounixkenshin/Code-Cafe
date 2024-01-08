@@ -4,6 +4,9 @@ from psutil import users
 
 app = Flask(__name__)
 
+app.secret_key = 'UKHIYE'
+
+
 # Sample data for blog posts
 blog_posts = [
     {"username": "JohnDoe", "date": "2023-12-01", "time": "14:30", "topic": "Python", "description": "Introduction to Python Programming."},
