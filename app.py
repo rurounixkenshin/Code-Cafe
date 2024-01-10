@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 app.secret_key = 'UKHIYE'
 
+registered_users = []
+
 
 # Sample data for blog posts
 blog_posts = [
@@ -44,16 +46,17 @@ def home():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-    error_message = None  # Initialize error_message to None
+    error_message = None
 
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
 
         # Check if the provided username exists and the password is correct
-        if username in users and users[username]['password'] == password:
-            # For simplicity, you can consider the user as signed in by setting a session variable
-            # In a real application, use a proper user authentication system
+        user = next((user for user in registered_users if user['username'] == username and user['password'] == password), None)
+
+        if user:
+            # Set the session username to the signed-in user
             session['username'] = username
             return redirect(url_for('home'))
 
@@ -62,21 +65,28 @@ def signin():
 
     return render_template('signin.html', error_message=error_message)
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    # Add logic for handling registration form submission (to be implemented)
     if request.method == 'POST':
-        # Retrieve username, email, and password from the form data
+        # Get user details from the registration form
         username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
 
-        # Add your registration logic here (e.g., store user data in a database)
+        # Perform registration logic (add user to the list, validate inputs, etc.)
+        # In a real application, you would hash the password and store it securely
 
-        # Assuming successful registration, set session variable and redirect to the user's profile
+        # For this example, let's assume registration is successful
+        registered_users.append({'username': username, 'email': email, 'password': password})
+
+        # Set the session username to the registered user
         session['username'] = username
-        return redirect(url_for('profile'))
 
+        # Redirect the user to their profile page
+        return redirect(url_for('user_profile'))
+
+    # Render the registration template for the 'GET' request
     return render_template('register.html')
 
 @app.route('/projects')
@@ -107,25 +117,44 @@ def about():
 
 @app.route('/profile')
 def profile():
-    # Assume user data is fetched from a database
-    user_data = {
-        "username": "JohnDoe",
-        "email": "john@example.com",
-        "bio": "A passionate coder exploring the world of technology.",
-    }
-        # Check if the user is logged in
-    if 'username' in session:
-        return render_template('profile.html', user_data=user_data, show_logout=True)
-    else:
-        return redirect(url_for('signin'))
-        # Add more fields as needed
+    # Get the current session username
+    username = session.get('username', None)
 
+    # Fetch user data based on the username
+    user = next((user for user in registered_users if user['username'] == username), None)
+
+    return render_template('profile.html', user=user)
+
+@app.route('/user_profile')
+def user_profile():
+    # Your logic to fetch user data
+    user_data = {'username': 'JohnDoe', 'email': 'john@example.com', 'bio': 'A passionate coder.'}
     return render_template('profile.html', user_data=user_data)
 
-@app.route('/edit_profile')
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
 def edit_profile():
-    # Logic for editing the profile (to be implemented)
-    return "This is the page for editing the profile."
+    # Get the current user's username from the session
+    username = session.get('username')
+
+    # Fetch user data from the users dictionary
+    user_data = users.get(username, {})
+
+    if request.method == 'POST':
+        # Update user data based on the form submission
+        user_data['password'] = request.form.get('password')
+        user_data['email'] = request.form.get('email')
+        user_data['bio'] = request.form.get('bio')
+
+        # Add more fields as needed (e.g., social links, profile image)
+
+        # Save the updated user data (in a real application, update the database)
+        users[username] = user_data
+
+        # Redirect the user to their updated profile page
+        return redirect(url_for('user_profile'))
+
+    return render_template('edit_profile.html', user_data=user_data)
 
 @app.route('/logout')
 def logout():
