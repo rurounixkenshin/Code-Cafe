@@ -33,7 +33,7 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ShadowP2066/Code-Cafe.git
+   git clone https://github.com/rurounixkenshin/Code-Cafe.git
    ```
 
 2. Install dependencies:
@@ -67,19 +67,8 @@ The project structure is organized as follows:
 ## Contributing
 
 Contributions are welcome! If you find a bug or have an enhancement in mind, please open an issue or submit a pull request.
-Send an email to <shadowp2066@proton.me>
+Send an email to <immortalxkenshin@proton.me>
 
 ## Author :black_nib:
 
-- **ShadowP2066** [ShadowP2066](https://github.com/ShadowP2066)
-
-## Acknowledgements :pray:
-
-All work contained in this project was completed as part of the curriculum for ALX Africa SE. ALX Africa is an online full-stack software engineering program that prepares students for careers in the tech industry using project-based peer learning. For more information, visit [this link](https://www.alxafrica.com//).
-
-<p align="center">
-  <img
-   src="https://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png"
-       alt="ALX Africa Logo"
-  >
-</p>
+- **ShadowP2066** [rurounixkenshin](https://github.com/rurounixkenshin)
